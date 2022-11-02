@@ -1,0 +1,50 @@
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+/*declaração de variáveis com escopo global no documento (root)*/
+:root{ 
+    --pixels: 10px 10px 10px;
+}
+
+.content{
+    width: 100vw;
+    height: 100vw;
+
+    display: grid;
+    grid-template-columns: var(--pixels); /*1fr 1fr 1fr;*/
+    grid-template-rows: var(--pixels); /*1fr 1fr 1fr;*/
+    gap: 5px;
+
+    justify-content: space-evenly;
+    align-content: space-around;
+}
+
+.content div{
+    background-color: slateblue;
+}
+
+.realinhado{
+    --size: 50%;
+    width: var(--size);
+    height: var(--size);
+    align-items: start;
+    justify-items: end;
+}
+
+div.self{
+    background-color: tomato;
+    justify-self: stretch;
+    align-self: stretch;
+}
+
+/*se for um div o seletor procura um div que não é da classe="desalihado", 
+ou seja todo o restante dos divs*/
+div :not(div.realinhado){  
+    background-color: yellow;
+}
